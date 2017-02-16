@@ -1,8 +1,9 @@
-export const geocodeByAddress = (address, callback) => {
+export const geocodeByAddress = (address, callback, options) => {
   const geocoder = new google.maps.Geocoder()
   const OK = google.maps.GeocoderStatus.OK
+  const { region } = options
 
-  geocoder.geocode({ address }, (results, status) => {
+  geocoder.geocode({ address, region }, (results, status) => {
     if (status !== OK) {
       callback({ status }, null, results)
       return
@@ -17,11 +18,12 @@ export const geocodeByAddress = (address, callback) => {
   })
 }
 
-export const geocodeByPlaceId = (placeId, callback) => {
+export const geocodeByPlaceId = (placeId, callback, options) => {
   const geocoder = new google.maps.Geocoder()
   const OK = google.maps.GeocoderStatus.OK
+  const { region } = options
 
-  geocoder.geocode({ placeId }, (results, status) => {
+  geocoder.geocode({ placeId, region }, (results, status) => {
     if (status !== OK) {
       callback({ status }, null, null)
       return
