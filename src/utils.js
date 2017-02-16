@@ -2,7 +2,7 @@ export const geocodeByAddress = (address, callback, options) => {
   const geocoder = new google.maps.Geocoder()
   const OK = google.maps.GeocoderStatus.OK
   const { region } = options
-
+  console.log(region)
   geocoder.geocode({ address, region }, (results, status) => {
     if (status !== OK) {
       callback({ status }, null, results)
